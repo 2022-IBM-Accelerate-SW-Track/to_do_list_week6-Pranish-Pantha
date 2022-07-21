@@ -1,6 +1,6 @@
 const express = require("express"),
     app = express(),
-    port = process.env.PORT || 8080,
+    port = process.env.PORT || 3001,
     cors = require("cors");
 
 // AUTH---
@@ -89,6 +89,7 @@ app.get("/authenticate", auth, (req, res) => {
     res.sendStatus(200);
 });
 
+// Insecure since it is not protected by basic auth
 app.post("/users", (req, res) => {
     const b64auth = (req.headers.authorization || '').split(' ')[1] || ''
     const [username, password] = Buffer.from(b64auth, 'base64').toString().split(':')

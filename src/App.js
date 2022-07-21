@@ -10,6 +10,7 @@ function App() {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
 
+    // Triggers rerendering of the page if state changes
     const authUser = async () => {
        setAuthenticated(await api.authenticate(username, password));
     }
